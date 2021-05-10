@@ -513,7 +513,7 @@ datum/game_mode/pod_wars/proc/do_team_member_death(var/mob/M, var/datum/pod_wars
 		filepath = replacetext(filepath, "{ALTS}", "-[rand(1, sound_amts)]")	//if alts is 1, it rand(1,1) will always choose 1
 
 	//uncomment this message_admins for testing sounds
-	//message_admins("playing to:[team.name]. filepath is now: [filepath]")
+	message_admins("playing to:[team.name]. filepath is now: [filepath]")
 	for (var/datum/mind/M in team.members)
 		M.current.playsound_local(M.current, filepath, volume, 0, flags = SOUND_IGNORE_SPACE)
 
