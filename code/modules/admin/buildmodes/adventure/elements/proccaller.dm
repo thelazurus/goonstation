@@ -10,7 +10,7 @@
 	target = null
 	var/procpath = ""
 	var/arg = null
-	var/object_to_call = null
+	var/object_to_call = "usr"
 
 	var/static/list/triggeracts = list("Trigger" = "trigger")
 
@@ -31,7 +31,10 @@
 		switch(act)
 			if ("trigger")
 				if (object_to_call)
-					call(object_to_call, procpath)(arg) //want more arguments? code it yourself
+					var/actual_object = object_to_call
+					if(actual_object == "usr")
+						actual_object = usr
+					call(actual_object, procpath)(arg) //want more arguments? code it yourself
 				else
 					call(procpath)(arg)
 				return
